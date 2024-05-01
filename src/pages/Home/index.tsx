@@ -3,8 +3,11 @@ import {
   CountdownContainer,
   FormContainer,
   HomeContainer,
+  MinutesAmountInput,
   Separator,
-} from './styuled';
+  StartCountdownButton,
+  TaskInput,
+} from './styled';
 
 export function Home() {
   return (
@@ -12,10 +15,25 @@ export function Home() {
       <form action=''>
         <FormContainer>
           <label htmlFor='task'>Vou trabalhar em</label>
-          <input id='task'></input>
+          <TaskInput
+            id='task'
+            list='task-sugestion'
+            placeholder='Dê um nome para seu projeto'
+          />
+
+          <datalist id='task-sugestion'>
+            <option value='Projeto 1'></option>
+          </datalist>
 
           <label>durante</label>
-          <input type='number' id='minutesAmount' />
+          <MinutesAmountInput
+            type='number'
+            id='minutesAmount'
+            placeholder='00'
+            step='5'
+            min='5'
+            max='60'
+          />
           <span>minutos</span>
         </FormContainer>
 
@@ -27,9 +45,10 @@ export function Home() {
           <span>0</span>
         </CountdownContainer>
 
-        <button type='submit'>
-          <Play /> Começar
-        </button>
+        <StartCountdownButton disabled type='submit'>
+          <Play />
+          Começar
+        </StartCountdownButton>
       </form>
     </HomeContainer>
   );
